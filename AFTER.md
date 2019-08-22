@@ -1,4 +1,4 @@
-いれたあと
+いれたあと。なんか自動化できないやつ。
 
 - SELinuxの無効化
   - `/etc/selinux/config`
@@ -42,3 +42,9 @@
    </IfModule>
   :
   ```
+- mysqlの最初のパスワード取得
+  - `sudo grep "A temporary password" /var/log/mysqld.log`
+- 最初のパスワードをもとにmysqlにログインしてパスワードとか変更
+  - `sudo mysql_secure_installation`
+  - 新しいパスワード以外ぜんぶ"y"でいい
+  - ??????なぜかphpmyadminにログインできない。。。。
