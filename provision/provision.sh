@@ -8,26 +8,26 @@ echo "start and enbale httpd!!!!!!!"
 sudo systemctl start httpd
 sudo systemctl enable httpd
 echo "hey, are you ready to install php?? first, add repository."
-sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-sudo rpm -Uvh remi-release-7.rpm
+sudo yum install epel-release yum-utils
+sudo yum install http://rpms.remirepo.net/enterprise/remi-release-73.rpm
 echo "second, we here, remove old (pre install) php."
 sudo yum remove php-*
-echo "yeaaah! finaly install php!!!!!!!"
-sudo yum install -y --disablerepo=* --enablerepo=epel,remi,remi-safe,remi-php73 php
-sudo yum info php --enablerepo=remi-php73
+echo "yeaaah! finaly have installed php!!!!!!!"
 sudo yum-config-manager --enable remi-php73
+sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
 echo "congulatiolation!!!"
 echo "ほんとはここでphpmyadminをリポジトリに追加するんだけどファイル編集をプロビジョニングでやる方法がわからなかったから飛ばしたよ"
-echo "next, the time to mysql. first, remove old one."
+echo "next, the time to mariadb(mysql). first, remove old one."
 sudo yum remove mysql*
-echo "second, install repository."
-sudo yum -y install http://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
-echo "third, install mysql-community-server!!!!"
-sudo yum -y install mysql-community-server
+echo "second, add repository file."
+sudo rpm --import https://yum.mariadb.orb/RPM-GPG-KEY-MariaDB/etc/yum.repos.d/mariadb.repo
+echo "!!!!ATTENTION!!!!"
+echo "you need repository manually on /files/mariadb.repo to guest /etc/yum.repos.d/mariadb.repo ."
+echo "third, install mariadb!!!!"
+echo "... if you have added mariadb repo, then `sudo yum -y install MariaDB-devel MariaDB-client MariaDB-server`"
 echo "wow, great! shall we last dance? start and enable mysqld!!!!"
-sudo systemctl start mysqld
-sudo systemctl enable mysqld
+echo "... if you have installed mariadb, then `sudo systemctl start mysqld`"
+echo "... and `systemctl enable mysqld` too."
 echo "perfect! okok, next time, the turn of node and npm."
 sudo curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
 sudo yum install -y nodejs
