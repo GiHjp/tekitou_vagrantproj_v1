@@ -8,8 +8,9 @@ echo "start and enbale httpd!!!!!!!"
 sudo systemctl start httpd
 sudo systemctl enable httpd
 echo "hey, are you ready to install php?? first, add repository."
-sudo yum install epel-release yum-utils
-sudo yum install http://rpms.remirepo.net/enterprise/remi-release-73.rpm
+sudo yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+sudo yum install -y epel-release yum-utils
+sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-73.rpm
 echo "second, we here, remove old (pre install) php."
 sudo yum remove php-*
 echo "yeaaah! finaly have installed php!!!!!!!"
@@ -20,7 +21,7 @@ echo "ほんとはここでphpmyadminをリポジトリに追加するんだけ�
 echo "next, the time to mariadb(mysql). first, remove old one."
 sudo yum remove mysql*
 echo "second, add repository file."
-sudo rpm --import https://yum.mariadb.orb/RPM-GPG-KEY-MariaDB/etc/yum.repos.d/mariadb.repo
+sudo rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB/etc/yum.repos.d/mariadb.repo
 echo "!!!!ATTENTION!!!!"
 echo "you need repository manually on /files/mariadb.repo to guest /etc/yum.repos.d/mariadb.repo ."
 echo "third, install mariadb!!!!"

@@ -3,6 +3,11 @@
 - SELinuxの無効化
   - `/etc/selinux/config`
   - reboot必要っぽい
+- mariadbのインストール
+  - `/etc/yum.repos.d/mariadb.repo`を作成し/files/mariadb.repoをコピー
+  - `sudo yum -y install MariaDB-devel MariaDB-client MariaDB-server`
+  - mariadbの起動と永続化
+  - `sudo systemctl start mysqld`, `sudo systemctl enable mysqld`
 - phpmyadminのリポジトリ追加とインストール
   - `/etc/yum.repos.d/remi.repo`
   - provisionのfileの`remi.repo`参照して一行加える
@@ -42,9 +47,7 @@
    </IfModule>
   :
   ```
-- mysqlの最初のパスワード取得
-  - `sudo grep "A temporary password" /var/log/mysqld.log`
-- 最初のパスワードをもとにmysqlにログインしてパスワードとか変更
+- パスワード変更
   - `sudo mysql_secure_installation`
   - 新しいパスワード以外ぜんぶ"y"でいい
-  - ??????なぜかphpmyadminにログインできない。。。。
+  - 新しいパスワードは途中で出てくることに注意　ちゃんと読もう
