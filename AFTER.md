@@ -1,7 +1,8 @@
 いれたあと
 
 - SELinuxの無効化
- - `/etc/selinux/config`
+  - `/etc/selinux/config`
 - phpmyadminのリポジトリ追加とインストール
- - `/etc/yum.repos.d/remi.repo`
- - provisionのfileの`remi.repo`参照して一行加える
+  - `/etc/yum.repos.d/remi.repo`
+  - provisionのfileの`remi.repo`参照して一行加える
+  - `sudo yum install -y phpmyadmin`
