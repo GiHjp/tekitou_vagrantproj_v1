@@ -67,8 +67,19 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  # ファイルを/以下に送るのがなぜかうまくいかない
-  # config.vm.provision "file", source: "provision/files/remi.repo", destination: "/etc/yum.repos.d/remi.repo", privileged: true
   # privileged: falseでroot以外の（何かはしらんけど多分vagrant）ユーザーでsudoで実行
-  config.vm.provision "shell", path: "provision/provision.sh", privileged: false
+
+  # [アプデとyum install諸々]
+  config.vm.provision "shell", path: "provision/scripts/install_utils.sh", privileged: false
+  # [php install]
+  config.vm.provision "shell", path: "provision/scripts/install_php.sh", privileged: false
+  # [phpmyadmin]
+  config.vm.provision "file", source: "provision/files/remi.repo", destination: "~/remi.repo"
+  config.vm.provision "shell", path: "provision/scripts/install_phpmyadmin.sh", privileged: false
+  # [mariadb]
+  config.vm.provision "shell", path: "provision/scripts/install_mariadb1.sh", privileged: false
+  config.vm.provision "file", source: "provision/files/mariadb.repo", destination: "~/mariadb.repo"
+  config.vm.provision "shell", path: "provision/scripts/install_mariadb2.sh", privileged: false
+  # [node]
+  config.vm.provision "shell", path: "provision/scripts/install_node.sh", privileged: false
 end

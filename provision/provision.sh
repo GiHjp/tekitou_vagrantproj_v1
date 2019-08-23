@@ -15,7 +15,7 @@ echo "second, we here, remove old (pre install) php."
 sudo yum remove php-*
 echo "yeaaah! finaly have installed php!!!!!!!"
 sudo yum-config-manager --enable remi-php73
-sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
+sudo yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
 echo "congulatiolation!!!"
 echo "ほんとはここでphpmyadminをリポジトリに追加するんだけどファイル編集をプロビジョニングでやる方法がわからなかったから飛ばしたよ"
 echo "next, the time to mariadb(mysql). first, remove old one."
