@@ -71,10 +71,10 @@ Vagrant.configure("2") do |config|
 
   # [アプデとyum install諸々]
   config.vm.provision "shell", path: "provision/scripts/install_utils.sh", privileged: false
+  # [node]
+  # なんかしらんけど最後に書いたらなんか入らなかったのでこっちにもってきた
+  config.vm.provision "shell", path: "provision/scripts/install_node.sh", privileged: false
   # [disable selinux]
-  # 名前はconfigでいけるのかな？
-  # もとのやつを消してなくてもいいのかな？
-  # これは消してみた　httpは消さずに上書きしてみ
   config.vm.provision "file", source: "provision/files/selinux_config", destination: "~/config"
   config.vm.provision "shell", path: "provision/scripts/send_selinux_config.sh", privileged: false
   # [php install]
@@ -83,15 +83,13 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "provision/files/remi.repo", destination: "~/remi.repo"
   config.vm.provision "shell", path: "provision/scripts/install_phpmyadmin.sh", privileged: false
   # [httpd.conf overload(for phpmyadmin)]
-  # 上書きが失敗した？のかもしれないので消してみた
-  # 消したのもなんか失敗するんでとりあえず省いてみた
-  # -> ここ以外はうまくいってたのでphpmyadmin.confをぶち込むところがおかしそう
-  # config.vm.provision "file", source: "provision/files/phpMyAdmin.conf", destination: "~/phpMyAdmin.conf"
-  # config.vm.provision "shell", path: "provision/scripts/update_phpmyadmin.conf.sh", privileged: false
+  config.vm.provision "file", source: "provision/files/phpMyAdmin.conf", destination: "~/phpMyAdmin.conf"
+  # idk why occur the problem what i can't boot mysqld
+  # with `mv phpMyAdmin.conf`, but can `cp` then `rm -rf` flow.
+  # completely unclear... does anyone know the cause?
+  config.vm.provision "shell", path: "provision/scripts/update_phpmyadmin.conf.sh", privileged: false
   # [mariadb]
   config.vm.provision "shell", path: "provision/scripts/install_mariadb1.sh", privileged: false
   config.vm.provision "file", source: "provision/files/mariadb.repo", destination: "~/mariadb.repo"
   config.vm.provision "shell", path: "provision/scripts/install_mariadb2.sh", privileged: false
-  # [node]
-  config.vm.provision "shell", path: "provision/scripts/install_node.sh", privileged: false
 end
