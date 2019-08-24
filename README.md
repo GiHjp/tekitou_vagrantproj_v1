@@ -14,6 +14,8 @@
 
 ![](media/openssh.PNG)
 
+- in my environment, some files to send to guest are saved as `CRLF` format. At Linux, all files has processed as `LF`, so if have a problem, i recommend overload as `LF`.  
+
 ### Vagrantfile options
 - the goal is using [express](https://expressjs.com/) `environment, so set port `3000`
 ```ruby
