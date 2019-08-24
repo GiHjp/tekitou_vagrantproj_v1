@@ -17,7 +17,7 @@
 - idk what's the reason but in my environment some provision files have be converted to `CRLF` format. At Linux world all files are proccessed as `LF`, so if you have a problem, plz confirm file format and i recommend overload as `LF`.
 
 ### Vagrantfile options
-- the goal is using [express](https://expressjs.com/) `environment, so set port `3000`
+- the goal is using [express](https://expressjs.com/) environment, so set port `3000`
 ```ruby
   config.vm.network "private_network", ip: "192.168.33.10", guest: 3000, host: 3000
 ```
