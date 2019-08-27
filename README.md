@@ -36,6 +36,7 @@
 flow order
 - update `yum`
 - install `wget`, `vim`, `httpd`, `gcc-c++`, `make`
+- disable firewalld
 - disable SELinux (should do reboot, to activate)
 - add repo PHP73
 - install PHP familly

@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.memory = "1024"
+    vb.memory = "2048"
   end
   #
   # View the documentation for the provider you are using for more
@@ -71,6 +71,8 @@ Vagrant.configure("2") do |config|
 
   # [アプデとyum install諸々]
   config.vm.provision "shell", path: "provision/scripts/install_utils.sh", privileged: false
+  # [kill firewalld]
+  config.vm.provision "shell", path: "provision/scripts/kill_firewall.sh", privileged: false
   # [node]
   # なんかしらんけど最後に書いたらなんか入らなかったのでこっちにもってきた
   config.vm.provision "shell", path: "provision/scripts/install_node.sh", privileged: false
