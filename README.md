@@ -32,6 +32,8 @@
   end
 ```
 
+- At default, i reserved sync folder host `./data` and guest `/home/vagrant/data`. If you want to touch only web app for example, I recommend guest `/var/www/html` . It's default web root of apache.
+
 ## Course
 flow order
 - update `yum`

@@ -1,8 +1,7 @@
-いれたあと。なんか自動化できないやつ。
+## Things should do next after you have finished provision(like first `vagrant up`)
 
-- SELinuxの無効化
+- Disable SELinux
   - `/etc/selinux/config`
-  - reboot必要っぽい
-- パスワード変更
+  - need to **reboot** to reflect changing configl
+- Initialize MySQL pasword
   - `sudo mysql_secure_installation`
-  - 新しいパスワードは途中で出てくることに注意　ちゃんと読もう
