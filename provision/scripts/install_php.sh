@@ -6,5 +6,5 @@ sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-73.rpm
 sudo yum remove php-*
 echo "----- let's install!! here we go... -----"
 sudo yum-config-manager --enable remi-php73
-sudo yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd
+sudo yum install -y php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd php-intl
 echo "----- 🍺it's all over🍺 -----"
